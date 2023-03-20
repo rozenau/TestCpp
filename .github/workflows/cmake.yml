@@ -35,16 +35,11 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C ${{env.BUILD_TYPE}}
   
-  scan:
-      runs-on: self-hosted
 
-      steps:
-      - uses: actions/checkout@v3
-      
-      # Runs code analysis with C/C++test.
-      - name: Run C/C++test
-        uses: parasoft/run-cpptest-action@2.0.0
-        with:
-          input: build/compile_commands.json
-          testConfig: 'builtin://MISRA C 2012'
-          compilerConfig: 'gcc_9-64'
+    # Runs code analysis with C/C++test.
+    - name: Run C/C++test
+      uses: parasoft/run-cpptest-action@2.0.0
+      with:
+        input: build/compile_commands.json
+        testConfig: 'builtin://MISRA C++ 2008'
+        compilerConfig: 'gcc_9-64'
