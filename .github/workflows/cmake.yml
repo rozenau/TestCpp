@@ -47,4 +47,4 @@ jobs:
         with:
           input: build/compile_commands.json
           testConfig: 'builtin://MISRA C 2012'
-          compilerConfig: 'clang_10_0'
+          compilerConfig: 'gcc_9-64'
