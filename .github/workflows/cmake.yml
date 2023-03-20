@@ -34,4 +34,17 @@ jobs:
       # Execute tests defined by the CMake configuration.
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C ${{env.BUILD_TYPE}}
+  
+  scan:
+      runs-on: ubuntu-latest
 
+      steps:
+      - uses: actions/checkout@v3
+      
+      # Runs code analysis with C/C++test.
+      - name: Run C/C++test
+        uses: parasoft/run-cpptest-action@2.0.0
+        with:
+          input: build/compile_commands.json
+          testConfig: 'builtin://MISRA C 2012'
+          compilerConfig: 'clang_10_0'
