@@ -13,5 +13,6 @@ int divide(int a, int b)
 int main()
 {
   std::cout << "Hello world!";
+  divide(100, 0);
   return 0;
 }
